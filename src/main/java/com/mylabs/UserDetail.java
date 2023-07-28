@@ -1,5 +1,7 @@
 package com.mylabs;
 
+import java.util.Objects;
+
 public class UserDetail {
 
     String name;
@@ -34,5 +36,21 @@ public class UserDetail {
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+
+        if (!(o instanceof UserDetail)) return false;
+
+        UserDetail that = (UserDetail) o;
+        return Objects.equals(getEmail(), that.getEmail());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEmail());
     }
 }
